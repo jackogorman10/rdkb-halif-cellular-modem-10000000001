@@ -44,7 +44,7 @@ extern "C"{
 
 /*
 * TODO (Enhance Error Reporting):
-*   - Replace the generic `RETURN_ERR` with a more descriptive error code enumeration.
+*   - Review a future extension of STATUS_FAILED through compatibility review.
 *   - Define specific error codes to pinpoint various failure scenarios, including:
 *       - Invalid input parameters (e.g., null pointers, out-of-range values)
 *       - Resource allocation failures (e.g., out-of-memory)
@@ -95,6 +95,8 @@ int Modem_Reboot(void);
  * This function retrieves the modem's firmware version and stores it in the provided buffer.
  *
  * @param[out] firmware_version - Buffer (min. 128 bytes) to store the firmware version (e.g., "EM06ALAR04A01M4G_01.003.01.003").
+ * @note The caller owns this buffer. Null termination, truncation behavior, and
+ * output contents after failure are not specified by this interface.
  *
  * @returns Status of the operation:
  * @retval STATUS_SUCCESS - On success.
